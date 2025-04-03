@@ -192,8 +192,8 @@ button {
   justify-content: space-between; 
   align-items: center;
   padding: 1em; 
-  position: fixed;
-  bottom: 2em;
+  position: absolute;
+  bottom: 0;
   left: 1.5em;
   right: 1.5em;
   z-index: 10;
@@ -227,6 +227,7 @@ button {
   background-color: #A40931;
   border-style: none;
   border-radius: 2px;
+  border: 1px solid #FBFBFC;
   box-shadow: 1px 1px 5px #CAD0D3;
   cursor: pointer;
   padding: 1.2em;
@@ -238,7 +239,6 @@ button {
   background-color: #FBFBFC;
   color: #A40931;
   border: 1px solid #A40931;
-  padding: 1.3em;
 }
 
 .next:focus-visible, 
