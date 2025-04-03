@@ -187,22 +187,32 @@ button {
   display: inline-block;
 }
 
+.div_nav_button {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 1em; 
+  position: fixed;
+  bottom: 2em;
+  left: 1.5em;
+  right: 1.5em;
+  z-index: 10;
+  gap: 0.5em;
+}
+
 .back {
+  flex: 1;
   text-align: center;
   color: #A40931;
   font-weight: bold;
-  cursor: pointer;
-  position: absolute;
   background-color: #FBFBFC;
+  border-radius: 2px;
   border: 1px solid #FBFBFC;
-  box-shadow: 1px 1px 5px #CAD0D3;
-  position: absolute;
+  box-shadow: 1px 1px 5px #CAD0D3;  
+  cursor: pointer;
   padding: 1.2em;
   font-size: 1.2em;
-  bottom: 0;
   z-index: 2;
-  left: 1em; 
-  width: 40%;
 }
 
 .back:hover {
@@ -210,21 +220,18 @@ button {
 }
 
 .next {
+  flex: 1;
   text-align: center;
   color: #FBFBFC;
   font-weight: bold;
   background-color: #A40931;
   border-style: none;
   border-radius: 2px;
-  cursor: pointer;
   box-shadow: 1px 1px 5px #CAD0D3;
-  position: absolute;
+  cursor: pointer;
   padding: 1.2em;
   font-size: 1.2em;
-  bottom: 0;
-  z-index: 2;
-  right: 1em;
-  width: 40%;
+  z-index: 2;  
 }
 
 .next:hover {
@@ -397,7 +404,7 @@ select:-webkit-autofill:focus {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 2em;
+    padding: 1.5em;
   }
 
   /* ----- Sections ----- */
@@ -412,15 +419,6 @@ select:-webkit-autofill:focus {
 
   .card_header {
     margin-bottom: 1em;
-  }
-
-  /* ----- Buttons ------ */
-  .next {
-    right: 0.1em;
-  }
-
-  .back {
-    left: 0.1em;
   }
 
   /* ----- Input ----- */
@@ -461,11 +459,11 @@ select:-webkit-autofill:focus {
 
   /* ----- Buttons ------ */
   .next {
-    right: 1em;
+    right: 0em;
   }
 
   .back {
-    left: 1em;
+    left: 0em;
   }
 
   .div_nav_button {
