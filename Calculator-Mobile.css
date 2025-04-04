@@ -108,7 +108,7 @@ section.button-nav {
   left: 0;
   right: 0;
   bottom: 0.4em; /* Wichtig: vermeidet unteren Abschnitt des Fokus Borders der Buttons */
-  height: 5em;
+  height: 5.5em;
   background-color: #FBFBFC;
   z-index: 10;
   display: flex;
