@@ -391,9 +391,7 @@ select:-webkit-autofill:focus {
   padding-left: 0.2em;
 }
 
-#space1,
-#space2,
-#space3 {
+.space {
   height: 0.1em;
 }
 
