@@ -105,8 +105,8 @@ h2 {
 /* ---------------------- BUTTON NAV ---------------------- */
 section.button-nav {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 0.1em;
+  right: 0.1em;
   bottom: 0.4em; /* Wichtig: vermeidet unteren Abschnitt des Fokus Borders der Buttons */
   height: 5em;
   background-color: #FBFBFC;
@@ -187,6 +187,7 @@ button {
   display: inline-block;
 }
 
+.button-nav,
 .div_nav_button {
   display: flex;
   justify-content: space-between; 
@@ -286,10 +287,11 @@ button {
 
 .plan_card input {
   position: absolute;
-  opacity: 0;
-  pointer-events: auto;
-  width: 0;
-  height: 0;
+  opacity: 0.01;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  z-index: -1;
 }
 
 .plan_card input:checked ~ .plan_card_label {
@@ -618,10 +620,6 @@ select:-webkit-autofill:focus {
     left: 4em;
   }
 
-  .button-nav {
-    margin-left: 1em;
-  }
-
   /* ----- Input ----- */
   .input-field {
     padding: 2em;
@@ -695,7 +693,7 @@ select:-webkit-autofill:focus {
   }
 
   .button-nav {
-    margin-left: 1em;
+    margin-right: 2em;
   }
 
   /* ----- Input ----- */
@@ -770,7 +768,7 @@ select:-webkit-autofill:focus {
   }
 
   .button-nav {
-    margin-left: 1em;
+    margin-left: 2em;
   }
 
   /* ----- Input ----- */
