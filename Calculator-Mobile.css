@@ -105,8 +105,8 @@ h2 {
 /* ---------------------- BUTTON NAV ---------------------- */
 section.button-nav {
   position: absolute;
-  left: 0;
-  right: 0;
+  left: 0.1em;
+  right: 0.1em;
   bottom: 0.4em; /* Wichtig: vermeidet unteren Abschnitt des Fokus Borders der Buttons */
   height: 5.5em;
   background-color: #FBFBFC;
