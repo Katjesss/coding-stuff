@@ -167,6 +167,10 @@ legend {
   font-size: 1.2em;
   margin: 2em 0 1em 0;
 }
+ 
+.start_description {
+  padding-left: 1em;
+}
 
 .header_caption.submitslide {
   margin: 2em 1em;
