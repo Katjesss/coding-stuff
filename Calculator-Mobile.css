@@ -424,7 +424,15 @@ select:-webkit-autofill:focus {
   .card_header {
     margin-bottom: 1em;
   }
-
+  
+   /* ----- Buttons ------ */
+   .div_nav_button {
+    gap: 0.2em;
+    width:100%;
+    left: 0.1em;
+    right: 0.1em;
+  }
+  
   /* ----- Input ----- */
   .input-field {
     padding: 1.8em;
@@ -468,7 +476,6 @@ select:-webkit-autofill:focus {
     left: 0.1em;
     right: 0.1em;
   }
-
 
   /* ----- Input ----- */
   .input-field {
