@@ -659,6 +659,11 @@ Verwendete Tags:
                 }
             }
 
+            // 0 wird zu 1 
+            if (value === '0') {
+                value = '1';
+            }
+
             if (value.length > 6) {
                 value = value.slice(0, 6);
             }
@@ -672,6 +677,7 @@ Verwendete Tags:
         });
     });
 
+    /* Reset */
     function resetAllFields() {
         const inputs = document.querySelectorAll("input, select, textarea");
 
@@ -745,7 +751,6 @@ Verwendete Tags:
         return true;
     }
 
-
     function goToSlide(index) {
         curSlide = index;
 
@@ -772,7 +777,6 @@ Verwendete Tags:
         }
 
     }
-
 
     function updateSidebarState() {
         document.querySelectorAll(".sidebar_element").forEach(el => {
