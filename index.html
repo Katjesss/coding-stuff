@@ -126,7 +126,7 @@ Verwendete Tags:
                     <fieldset class="input-container">
                         <legend id="label_id1">Wie viele PC-Arbeitsplätze sollen verwaltet werden?</legend>
                         <input class="input-field" type="number" inputmode="numeric" id="input1_id" name="form_input1"
-                            placeholder="1" required aria-describedby="i-err1" aria-invalid="true" tabindex="0">
+                            placeholder="Anzahl der Arbeitsplätze" required aria-describedby="i-err1" aria-invalid="true" tabindex="0">
                         <p class="error-text" id="i-err1" aria-live="polite">Bitte geben Sie eine Zahl an.</p>
                     </fieldset>
                     <p class="space"></p>
@@ -161,7 +161,7 @@ Verwendete Tags:
                     <fieldset class="input-container">
                         <legend id="label_id3">Wie viele Standorte hat Ihr Unternehmen?</legend>
                         <input class="input-field" type="number" inputmode="numeric" id="input2_id" name="form_input2"
-                            placeholder="1" required aria-describedby="i-err2" aria-invalid="true">
+                            placeholder="Anzahl der Standorte" required aria-describedby="i-err2" aria-invalid="true">
                         <p class="error-text" id="i-err2" aria-live="polite">Bitte geben Sie eine Zahl an.</p>
                     </fieldset>
                     <p class="space"></p>
@@ -329,8 +329,15 @@ Verwendete Tags:
                         <input class="input-field" type="email" inputmode="email" autocomplete="email" id="input5_id"
                             name="form_input5" placeholder="E-Mail Adresse" required aria-describedby="i-err6"
                             aria-invalid="true">
-                        <p class="error-text" id="i-err6" aria-live="polite">Bitte geben Sie Ihre E-Mail Adresse an an.
+                        <p class="error-text" id="i-err6" aria-live="polite">Bitte geben Sie Ihre E-Mail Adresse an.
                         </p>
+                    </fieldset>
+                    <p class="space"></p>
+
+                    <fieldset class="input-container">
+                        <legend id="label_id11">Telefonnummer</legend>
+                        <input class="input-field" type="tel" inputmode="tel" autocomplete="tel" id="input6_id"
+                            name="form_input6" placeholder="Telefonnummer">
                     </fieldset>
                 </fieldset>
                 <!-- Step 6 end -->
@@ -353,7 +360,14 @@ Verwendete Tags:
                         <p class="checkup">Firma: <span id="reviewCompany"></span></p>
                         <p class="checkup">E-Mail: <span id="reviewEmail"></span></p>
                         <br>
-                        Um das Formular abzuschicken, bitte Enter, Pfeiltaste oder Mausklick auf den Button drücken.
+                        Um das Formular abzuschicken, bitte Enter, Pfeiltaste oder per Mausklick auf den Abschicken-Button drücken.
+                        <br>
+                        <label class="checkbox-container">
+                            Ich akzeptiere die Datenschutzerklärung und willige in die Verarbeitung meiner personenbezogenen Daten ein.
+                            <input type="checkbox" required>
+                            <span class="checkmark"></span>
+                            <p class="error-text" id="i-err7" aria-live="polite">Bitte akzeptieren Sie.</p>
+                        </label>
                     </div>
                 </fieldset>
                 <!-- Step 7 end -->
@@ -361,8 +375,7 @@ Verwendete Tags:
                 <!-- Step 8 start -->
                 <div class="step_card" id="thankSlide" aria-labelledby="thank" role="region">
                     <h1 class="card_header thank_header" id="thank" tabindex="-1">Danke!</h1>
-                    <p class="header_caption"> Wir bearbeiten Ihre Anfrage und melden uns so schnell wie möglich. Dies
-                        kann ... Werktage in Anspruch nehmen.</p>
+                    <p class="header_caption">Vielen Dank für Ihre Angaben. Wir melden und schnellstmöglich bei Ihnen.</p>
                 </div>
                 <!-- Step 8 end -->
             </section>

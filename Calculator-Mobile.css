@@ -377,6 +377,74 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: #A40931;
 }
 
+/* ---------------------- Checkbox ---------------------- */
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding: 0.17em 0 0 2em;
+  margin-bottom: 0.75em;
+  cursor: pointer;
+  font-size: 1.1em;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1.5em;
+  width: 1.5em;
+  background-color: #DBE0E2;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #CAD0D3;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #2A3033;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  left: 0.5em;
+  top: 0.3em;
+  width: 0.3em;
+  height: 0.625em;
+  border: solid #FBFBFC;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
 /* ---------------------- Error (color and message) and Space ---------------------- */
 .input-error {
   background-color: rgba(231, 95, 104, 0.2) !important;
