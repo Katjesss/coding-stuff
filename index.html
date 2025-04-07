@@ -539,17 +539,32 @@ Verwendete Tags:
             } else if (input.type === "checkbox") {
                 if (!input.checked) {
                     allFilled = false;
+
                     const errorText = input.parentElement.querySelector(".error-text");
                     if (errorText) errorText.style.display = "block";
+
                     const checkmark = input.parentElement.querySelector(".checkmark");
-                    if (checkmark) checkmark.classList.add("checkbox-error");
+                    if (checkmark) {
+                        checkmark.classList.add("checkbox-error");
+
+                        // Automatisch scrollen zu diesem Element
+                        checkmark.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center',
+                            inline: 'nearest'
+                        });
+                    }
 
                 } else {
                     const errorText = input.parentElement.querySelector(".error-text");
                     if (errorText) errorText.style.display = "none";
+
                     const checkmark = input.parentElement.querySelector(".checkmark");
-                    if (checkmark) checkmark.classList.remove("checkbox-error");
+                    if (checkmark) {
+                        checkmark.classList.remove("checkbox-error");
+                    }
                 }
+
             } else {
                 const describedById = input.getAttribute("aria-describedby");
                 const errorText = describedById ? document.getElementById(describedById) : null;
