@@ -415,6 +415,13 @@ select:-webkit-autofill:focus {
   background-color: #CAD0D3;
 }
 
+/* Tab-Fokus */
+.checkbox-container input:focus-visible + .checkmark {
+  outline: 2px solid #A40931;
+  outline-offset: 2px;
+}
+
+
 /* When the checkbox is checked, add a blue background */
 .checkbox-container input:checked ~ .checkmark {
   background-color: #2A3033;
@@ -445,6 +452,13 @@ select:-webkit-autofill:focus {
   transform: rotate(45deg);
 }
 
+.checkmark.checkbox-error {
+  box-shadow: 0 0 0 2px #A40930c0;
+  background-color: rgba(231, 95, 104, 0.2);
+  border-radius: 2px;
+}
+
+
 /* ---------------------- Error (color and message) and Space ---------------------- */
 .input-error {
   background-color: rgba(231, 95, 104, 0.2) !important;
@@ -460,6 +474,16 @@ select:-webkit-autofill:focus {
 
 .space {
   height: 0.1em;
+}
+
+.text, 
+.header_caption.thanking {
+  font-size: 1.2em;
+  line-height: 2em;
+}
+
+.end {
+  padding-left: 1em;
 }
 
 

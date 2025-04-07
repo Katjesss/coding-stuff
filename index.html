@@ -110,10 +110,15 @@ Verwendete Tags:
             <fieldset class="step_card" aria-labelledby="header">
                 <h1 class="card_header" id="header">Kalkulatorstart</h1>
                 <!-- <h3 class="header_caption"> </h3>  Falls eine Unterüberschrift benötigt wird, einblenden und zwischen > < hier ergänzen -->
-                <label for="calculator_start" class="start_description">Um den Kalkulator zu starten, "Start" oder Enter
-                    drücken.</label><br>
-                <p class="start_description">Bitte beantworten Sie alle Fragen durch Eingabe oder durch Auswahl eines
-                    Buttons. Pro Frage kann nur eine Button-Option gewählt werden.</p>
+                <div class="start_description">
+                    <label for="calculator_start">Um den Kalkulator zu starten, "Start" oder Enter drücken.</label>
+                    <p>Bitte beantworten Sie alle Fragen durch Eingabe oder durch Auswahl eines Buttons. Pro Frage kann
+                        nur eine Button-Option gewählt werden. <br> Felder die nicht mit optinal gekennzeichnet sind,
+                        sind verpflichtend.</p>
+                    <p>Der Kalkulator ist ein Formular, welches von unseren Mitarbeitern genutzt wird, um ein
+                        individuelles angebot für Sie zu erstellen. Dafür beinhaltet der Kalkulator Fragen über die
+                        Firma und Kontaktdaten.</p>
+                </div>
             </fieldset>
             <!-- Step 0 end -->
 
@@ -126,7 +131,8 @@ Verwendete Tags:
                     <fieldset class="input-container">
                         <legend id="label_id1">Wie viele PC-Arbeitsplätze sollen verwaltet werden?</legend>
                         <input class="input-field" type="number" inputmode="numeric" id="input1_id" name="form_input1"
-                            placeholder="Anzahl der Arbeitsplätze" required aria-describedby="i-err1" aria-invalid="true" tabindex="0">
+                            placeholder="Anzahl der Arbeitsplätze" required aria-describedby="i-err1"
+                            aria-invalid="true" tabindex="0">
                         <p class="error-text" id="i-err1" aria-live="polite">Bitte geben Sie eine Zahl an.</p>
                     </fieldset>
                     <p class="space"></p>
@@ -340,7 +346,7 @@ Verwendete Tags:
                     <p class="space"></p>
 
                     <fieldset class="input-container">
-                        <legend id="label_id11">Telefonnummer</legend>
+                        <legend id="label_id11">Telefonnummer (optional)</legend>
                         <input class="input-field" type="tel" inputmode="tel" autocomplete="tel" id="input6_id"
                             name="form_input6" placeholder="Telefonnummer">
                     </fieldset>
@@ -365,12 +371,16 @@ Verwendete Tags:
                         <p class="checkup">Name: <span id="reviewName"></span></p>
                         <p class="checkup">Firma: <span id="reviewCompany"></span></p>
                         <p class="checkup">E-Mail: <span id="reviewEmail"></span></p>
+                        <p class="checkup">Telefon: <span id="reviewTel"></span></p>
                         <br>
-                        Um das Formular abzuschicken, bitte Enter, Pfeiltaste oder per Mausklick auf den Abschicken-Button drücken.
+                        Um das Formular abzuschicken, bitte Enter, Pfeiltaste oder per Mausklick auf den
+                        Abschicken-Button drücken.
                         <br>
+                        <p class="space"></p>
                         <label class="checkbox-container">
-                            Ich akzeptiere die Datenschutzerklärung und willige in die Verarbeitung meiner personenbezogenen Daten ein.
-                            <input type="checkbox" required>
+                            Ich akzeptiere die Datenschutzerklärung und willige in die Verarbeitung meiner
+                            personenbezogenen Daten ein.
+                            <input type="checkbox" id="privacy" required>
                             <span class="checkmark"></span>
                             <p class="error-text" id="i-err7" aria-live="polite">Bitte akzeptieren Sie.</p>
                         </label>
@@ -381,7 +391,18 @@ Verwendete Tags:
                 <!-- Step 8 start -->
                 <div class="step_card" id="thankSlide" aria-labelledby="thank" role="region">
                     <h1 class="card_header thank_header" id="thank" tabindex="-1">Danke!</h1>
-                    <p class="header_caption">Vielen Dank für Ihre Angaben. Wir melden und schnellstmöglich bei Ihnen.</p>
+                    <div class="end">
+                        <p class="header_caption thanking">Vielen Dank für Ihre Angaben. Wir melden und schnellstmöglich
+                            bei Ihnen.
+                        </p>
+                        <p class="text">
+                            Bei weiteren Fragen können Sie uns per E-Mail oder Telefon erreichen. <br>
+                            E-Mail: ... <br>
+                            Telefon: ... <br>
+                            Oder vereinbaren Sie einen Termin.<br>
+                            Ihr mars solutions Team
+                        </p>
+                    </div>
                 </div>
                 <!-- Step 8 end -->
             </section>
@@ -515,6 +536,20 @@ Verwendete Tags:
                     input.classList.remove("input-error");
                     if (errorText) errorText.style.display = "none";
                 }
+            } else if (input.type === "checkbox") {
+                if (!input.checked) {
+                    allFilled = false;
+                    const errorText = input.parentElement.querySelector(".error-text");
+                    if (errorText) errorText.style.display = "block";
+                    const checkmark = input.parentElement.querySelector(".checkmark");
+                    if (checkmark) checkmark.classList.add("checkbox-error");
+
+                } else {
+                    const errorText = input.parentElement.querySelector(".error-text");
+                    if (errorText) errorText.style.display = "none";
+                    const checkmark = input.parentElement.querySelector(".checkmark");
+                    if (checkmark) checkmark.classList.remove("checkbox-error");
+                }
             } else {
                 const describedById = input.getAttribute("aria-describedby");
                 const errorText = describedById ? document.getElementById(describedById) : null;
@@ -574,7 +609,7 @@ Verwendete Tags:
         }
     });
 
-    // Checkup Slide: Eingabewerte holen und ausgeben
+    // Check Slide: Eingabewerte holen und ausgeben
     function populateReviewSlide() {
         const mappings = [
             { source: document.getElementById("input1_id"), target: "reviewWorkstations" },
@@ -587,7 +622,8 @@ Verwendete Tags:
             { source: document.querySelector('input[name="radiobuttons6"]:checked'), target: "reviewNIS" },
             { source: document.getElementById("input3_id"), target: "reviewName" },
             { source: document.getElementById("input4_id"), target: "reviewCompany" },
-            { source: document.getElementById("input5_id"), target: "reviewEmail" }
+            { source: document.getElementById("input5_id"), target: "reviewEmail" },
+            { source: document.getElementById("input6_id"), target: "reviewTel" }
         ];
 
         mappings.forEach(mapping => {
@@ -656,6 +692,7 @@ Verwendete Tags:
             'form_input3' => 'text',
             'form_input4' => 'text',
             'form_input5' => 'email',
+            'form_input6' => 'text',
         ];
 
         $inputs = [];
@@ -715,6 +752,7 @@ Verwendete Tags:
             "Name: $input3<br>" .
             "Firma: $input4<br>" .
             "Email: $input5<br>".
+            "Telefon: $input6<br>".
 
              "<strong>Zeitstempel</strong>: $timestamp<br>";
 
