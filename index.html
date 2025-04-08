@@ -620,7 +620,7 @@ Verwendete Tags:
     // Radio button navigation (wegen mac)
     document.querySelectorAll('.plan_card_label').forEach(label => {
         label.addEventListener('keydown', e => {
-            if (e.key === ' ' || e.key === 'Enter') {
+            if (e.key === ' ') {
                 const input = document.getElementById(label.getAttribute('for'));
                 input.checked = true;
                 input.dispatchEvent(new Event('change', { bubbles: true }));
