@@ -313,7 +313,7 @@ button {
   border: 1px solid #A40931;
 }
 
-.plan_card input {
+.plan_card input[type="radio"] {
   position: absolute;
   opacity: 0;
   pointer-events: auto;
