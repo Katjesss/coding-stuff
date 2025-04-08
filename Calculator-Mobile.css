@@ -346,7 +346,8 @@ button {
   width: 100%;
 }
 
-.plan_card input:focus-visible + .plan_card_label {
+.plan_card input:focus ~ .plan_card_label,
+.plan_card input:focus-visible ~ .plan_card_label {
   outline: 2px solid #A40931;
   outline-offset: 4px;
 }
