@@ -617,7 +617,7 @@ Verwendete Tags:
         }
     })
 
-    // Radio button navigation (wegen mac)
+    // Radio-Button Navigation (wegen mac)
     document.querySelectorAll('.plan_card_label').forEach(label => {
         label.addEventListener('keydown', e => {
             if (e.key === ' ') {
@@ -654,7 +654,6 @@ Verwendete Tags:
             }
         });
     }
-
 
     // Initiale Position und Button-Text festlegen
     updateSlidePosition();
@@ -724,95 +723,95 @@ Verwendete Tags:
     });
 
     // Klickbare Sidebar Navigation 
-    function setupSidebarNavigation() {
-        document.querySelectorAll(".sidebar_element").forEach(el => {
-            const targetSlide = parseInt(el.dataset.slide);
-            if (isNaN(targetSlide)) return;
+        function setupSidebarNavigation() {
+            document.querySelectorAll(".sidebar_element").forEach(el => {
+                const targetSlide = parseInt(el.dataset.slide);
+                if (isNaN(targetSlide)) return;
 
-            el.addEventListener("click", () => {
-                console.log("Klick erkannt auf Sidebar-Slide:", targetSlide);
-                if (
-                    targetSlide === 0 ||               // Willkommen nie klickbar
-                    targetSlide > reachedSlide ||      // Noch nicht erreichbar
-                    curSlide === thankSlide            // Nach Abschicken keine Navigation
-                ) return;
+                el.addEventListener("click", () => {
+                    console.log("Klick erkannt auf Sidebar-Slide:", targetSlide);
+                    if (
+                        targetSlide === 0 ||               // Willkommen nie klickbar
+                        targetSlide > reachedSlide ||      // Noch nicht erreichbar
+                        curSlide === thankSlide            // Nach Abschicken keine Navigation
+                    ) return;
 
-                tryNavigateToSlide(targetSlide);
+                    tryNavigateToSlide(targetSlide);
+                });
             });
-        });
-    }
-
-    function tryNavigateToSlide(targetIndex) {
-        // Wenn Slide i nicht valide, kein Sprung
-        const allValid = validateSlidesUpTo(targetIndex);
-        if (!allValid) return;
-
-        goToSlide(targetIndex);
-    }
-
-    function validateSlide(index) {
-        const slide = slides[index];
-        return validateSlideElement(slide);
-    }
-
-    function validateSlidesUpTo(index) {
-        for (let i = 0; i < index; i++) {
-            if (!validateSlide(i)) return false;
-        }
-        return true;
-    }
-
-    function goToSlide(index) {
-        curSlide = index;
-
-        if (curSlide === maxSlide) {
-            populateReviewSlide();
         }
 
-        updateSlidePosition();
-        updateCircles();
-        navButton();
-        updateSidebarState(); // ← wichtig, damit die Sidebar "live" reagiert
+        function tryNavigateToSlide(targetIndex) {
+            // Wenn Slide i nicht valide, kein Sprung
+            const allValid = validateSlidesUpTo(targetIndex);
+            if (!allValid) return;
 
-        // Fokus auf erstes <h1> in der sichtbaren Slide
-        const focusTarget = slides[curSlide].querySelector("h1");
-        if (focusTarget) {
-            focusTarget.classList.add("no-focus-ring");
-            focusTarget.setAttribute("tabindex", "-1");
-            focusTarget.focus({ preventScroll: true });
-
-            // optional: tabindex wieder entfernen nach kurzer Zeit
-            setTimeout(() => {
-                focusTarget.removeAttribute("tabindex");
-            }, 100);
+            goToSlide(targetIndex);
         }
 
-    }
+        function validateSlide(index) {
+            const slide = slides[index];
+            return validateSlideElement(slide);
+        }
 
-    function updateSidebarState() {
-        document.querySelectorAll(".sidebar_element").forEach(el => {
-            const targetSlide = parseInt(el.dataset.slide);
-            if (isNaN(targetSlide)) return;
-
-            const isCurrent = targetSlide === curSlide;
-            const isTooFar = targetSlide > reachedSlide;
-            const isLocked = curSlide === thankSlide;
-
-            if ((isTooFar || isLocked) && !isCurrent) {
-                el.classList.add("disabled");
-            } else {
-                el.classList.remove("disabled");
+        function validateSlidesUpTo(index) {
+            for (let i = 0; i < index; i++) {
+                if (!validateSlide(i)) return false;
             }
+            return true;
+        }
+
+        function goToSlide(index) {
+            curSlide = index;
+
+            if (curSlide === maxSlide) {
+                populateReviewSlide();
+            }
+
+            updateSlidePosition();
+            updateCircles();
+            navButton();
+            updateSidebarState(); // ← wichtig, damit die Sidebar "live" reagiert
+
+            // Fokus auf erstes <h1> in der sichtbaren Slide
+            const focusTarget = slides[curSlide].querySelector("h1");
+            if (focusTarget) {
+                focusTarget.classList.add("no-focus-ring");
+                focusTarget.setAttribute("tabindex", "-1");
+                focusTarget.focus({ preventScroll: true });
+
+                // optional: tabindex wieder entfernen nach kurzer Zeit
+                setTimeout(() => {
+                    focusTarget.removeAttribute("tabindex");
+                }, 100);
+            }
+
+        }
+
+        function updateSidebarState() {
+            document.querySelectorAll(".sidebar_element").forEach(el => {
+                const targetSlide = parseInt(el.dataset.slide);
+                if (isNaN(targetSlide)) return;
+
+                const isCurrent = targetSlide === curSlide;
+                const isTooFar = targetSlide > reachedSlide;
+                const isLocked = curSlide === thankSlide;
+
+                if ((isTooFar || isLocked) && !isCurrent) {
+                    el.classList.add("disabled");
+                } else {
+                    el.classList.remove("disabled");
+                }
+            });
+        }
+
+        // Setzte Fokus immer auf erstes Element der Slide
+        requestAnimationFrame(() => {
+            document.querySelector('.step_card.visible h1')?.focus();
         });
-    }
 
-    // Setzte Fokus immer auf erstes Element der Slide
-    requestAnimationFrame(() => {
-        document.querySelector('.step_card.visible h1')?.focus();
-    });
-
-    setupSidebarNavigation();
-    updateSidebarState();
+        setupSidebarNavigation();
+        updateSidebarState();
 
 
 
